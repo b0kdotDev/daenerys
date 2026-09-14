@@ -1,7 +1,7 @@
 'use server';
 
-const ROLES = new Set(['ninong', 'ninang']);
 const ANSWERS = new Set(['yes', 'thinking', 'no']);
+const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export type RsvpState = { sent?: boolean; error?: string; name?: string; answer?: string };
 
@@ -11,18 +11,25 @@ function field(form: FormData, key: string, max: number) {
     .slice(0, max);
 }
 
+function isPhone(value: string) {
+  const digits = value.replace(/\D/g, '');
+  return digits.length >= 10 && digits.length <= 15;
+}
+
 export async function submitRsvp(_prev: RsvpState, form: FormData): Promise<RsvpState> {
   if (field(form, 'company', 80)) return { sent: true, answer: 'no' };
 
   const name = field(form, 'name', 80);
-  const role = field(form, 'role', 20);
   const answer = field(form, 'answer', 20);
-  const contact = field(form, 'contact', 80);
+  const email = field(form, 'email', 80).toLowerCase();
+  const phone = field(form, 'phone', 30);
   const note = field(form, 'note', 500);
 
   if (!name) return { error: 'Please tell us your name.' };
-  if (!ROLES.has(role)) return { error: 'Please choose ninong or ninang.' };
   if (!ANSWERS.has(answer)) return { error: 'Please choose an answer.' };
+  if (email && !EMAIL.test(email)) return { error: 'Please enter a valid email.' };
+  if (phone && !isPhone(phone)) return { error: 'Please enter a valid phone number.' };
+  if (!email && !phone) return { error: 'Please leave an email or a phone number.' };
 
   const url = process.env.GOOGLE_SCRIPT_URL?.trim();
   if (!url) return { error: 'RSVP is not connected to the sheet yet.' };
@@ -30,7 +37,7 @@ export async function submitRsvp(_prev: RsvpState, form: FormData): Promise<Rsvp
   // ponytail: Apps Script answers POST with 302; following it becomes GET and looks like failure.
   const res = await fetch(url, {
     method: 'POST',
-    body: new URLSearchParams({ name, role, answer, contact, note }),
+    body: new URLSearchParams({ name, answer, email, phone, note }),
     redirect: 'manual',
   });
   if (res.status === 401 || res.status === 403) {
