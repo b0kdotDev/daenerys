@@ -14,7 +14,7 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
-  title: 'Brielle Daenerys turns one — October 9, 2026',
+  title: 'Brielle Daenerys',
   description: 'Her first year, and an invitation to stand as ninong or ninang.',
 };
 

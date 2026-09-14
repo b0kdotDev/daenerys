@@ -59,7 +59,7 @@ export default async function Home() {
               Scroll her story
             </a>
           </div>
-          <Teddy className="deco float-slow w-40 shrink-0 sm:w-56" />
+          <Teddy className="deco float-slow w-58 shrink-0 sm:w-64" />
         </div>
       </header>
 
