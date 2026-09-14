@@ -1,26 +1,85 @@
-@import "tailwindcss";
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@import 'tailwindcss';
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-serif: var(--font-cormorant);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), Georgia, serif;
+}
+
+.rsvp-dialog::backdrop {
+  background: rgb(92 40 60 / 0.4);
+}
+
+.milestone-card {
+  opacity: 0;
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease,
+    box-shadow 0.35s ease;
+}
+
+.milestone-card.from-left {
+  transform: translateX(-2.25rem) translateY(1rem);
+}
+
+.milestone-card.from-right {
+  transform: translateX(2.25rem) translateY(1rem);
+}
+
+.milestone-card.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+.milestone-card.is-in:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 36px rgba(224, 122, 154, 0.22);
+}
+
+@keyframes float {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-12px);
+  }
+}
+
+.deco {
+  pointer-events: none;
+  user-select: none;
+}
+
+.float {
+  animation: float 3.2s ease-in-out infinite alternate;
+}
+
+.float-slow {
+  animation: float 4.4s ease-in-out infinite alternate;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .milestone-card,
+  .milestone-card.from-left,
+  .milestone-card.from-right {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .float,
+  .float-slow {
+    animation: none;
+  }
 }
