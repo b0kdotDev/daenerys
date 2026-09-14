@@ -37,14 +37,7 @@ function Teddy({ className }: { className?: string }) {
   );
 }
 
-export default async function Home({
-  searchParams,
-}: {
-  searchParams: Promise<{ sent?: string; error?: string }>;
-}) {
-  const q = await searchParams;
-  const sent = q.sent === '1';
-  const error = q.error;
+export default async function Home() {
 
   return (
     <main className="relative overflow-x-hidden">
@@ -122,10 +115,10 @@ export default async function Home({
         <p className="font-serif max-w-md text-3xl leading-snug text-[#8a3d5c]">
           Will you walk the next years with her?
         </p>
-        <p className="mt-4 max-w-sm text-sm leading-6 text-[#b56b86]">
+        <p className="mt-4 text-sm leading-6 text-[#b56b86]">
           We would be honored if you stood as her ninong or ninang.
         </p>
-        <RsvpDialog sent={sent} error={error} />
+        <RsvpDialog />
         </div>
       </section>
     </main>

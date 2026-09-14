@@ -65,6 +65,27 @@ body {
   animation: float 4.4s ease-in-out infinite alternate;
 }
 
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  .invite-card,
+  .invite-card * {
+    visibility: visible;
+  }
+
+  .invite-card {
+    position: absolute;
+    inset: 0;
+    border: 0;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
