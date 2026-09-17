@@ -5,16 +5,16 @@ import { RsvpDialog } from './rsvp-dialog';
 
 const MONTHS = [
   { n: '01', title: 'One month', line: 'Tiny fists. A whole world, new.' },
-  { n: '02', title: 'Two months', line: 'The first real smile — and we were gone.' },
-  { n: '03', title: 'Three months', line: 'Head up. Eyes following every face she loves.' },
-  { n: '04', title: 'Four months', line: 'Giggles that filled the house.' },
-  { n: '05', title: 'Five months', line: 'Reaching, grabbing, discovering her hands.' },
-  { n: '06', title: 'Six months', line: 'Halfway to one. Sitting in the middle of our lives.' },
-  { n: '07', title: 'Seven months', line: 'First tastes. First teeth. First “this is mine.”' },
-  { n: '08', title: 'Eight months', line: 'On the move — the floor was hers.' },
-  { n: '09', title: 'Nine months', line: 'Pulling up. Holding on. Almost flying.' },
-  { n: '10', title: 'Ten months', line: 'Cruising the furniture like she owned it.' },
-  { n: '11', title: 'Eleven months', line: 'A few steps. A lot of courage.' },
+  { n: '02', title: 'Two months', line: 'Cake, pink bows, and that smile — two months already.' },
+  { n: '03', title: 'Three months', line: 'Burgundy tulle and a grin that filled the room.' },
+  { n: '04', title: 'Four months', line: 'Sunshine yellow. The giggles had a dress now.' },
+  { n: '05', title: 'Five months', line: 'Den-den at five. Ube cake, curious eyes, still our baby.' },
+  { n: '06', title: 'Six months', line: 'Halfway to one. That laugh could light the whole house.' },
+  { n: '07', title: 'Seven months', line: 'A yellow bow almost bigger than she was. Almost.' },
+  { n: '08', title: 'Eight months', line: 'Her own chair. Sitting pretty, like she planned it.' },
+  { n: '09', title: 'Nine months', line: 'Nine months, one cake, and a look that said she knew.' },
+  { n: '10', title: 'Ten months', line: 'Busy hands. The world was a toy, and she was busy.' },
+  { n: '11', title: 'Eleven months', line: 'Burgundy bow, two little teeth, and a smile that owned the bench.' },
   { n: '12', title: 'One year', line: 'October 9, 2026. Our Brielle Daenerys turns one.' },
 ] as const;
 
